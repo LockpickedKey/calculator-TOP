@@ -21,6 +21,11 @@
       }
 }
 
+.placeholder {
+      display: flex;
+      flex-direction: row;
+}
+
 .container {
       background: url(images/background-image.jpeg);
       border: 10px solid rgb(250, 250, 250);
@@ -56,5 +61,6 @@
 }
 
 .operators {
-
+      display: flex;
+      flex-direction: column;
 }
