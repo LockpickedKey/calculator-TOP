@@ -1,17 +1,22 @@
-function addition(num1, num2){
-      return num1 + num2;
-}
+let value1, value2, result, displayValue;
+let operator = '';
 
-function subtraction(num1, num2){
-      return num1 - num2;
-}
-
-function multiplication(num1, num2){
-      return num1 * num2;
-}
-
-function division(num1, num2){
-      return num1 / num2;
-}
-
-let num1, num2, operator;
+const operate = (n1, op, n2) => {
+      switch(op){
+          case '+':
+              add(n1, n2);
+              break;
+          case '-':
+              subtract(n1, n2);
+              break;
+          case '*':
+              multiply(n1, n2);
+              break;
+          case '/':
+              divide(n1, n2);
+              break;
+          case '%':
+              percentage(n1, n2);
+              break
+      }
+};
