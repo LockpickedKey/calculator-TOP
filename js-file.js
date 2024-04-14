@@ -3,28 +3,16 @@ let operator = '';
 let displayValue = '0';
 let displayNumbers = [];
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll(".displayable");
 const display = document.querySelector("#display");
 const ac = document.querySelector("#ac");
-const operate = (n1, op, n2) => {
-      switch(op){
-          case '+':
-              add(n1, n2);
-              break;
-          case '-':
-              subtract(n1, n2);
-              break;
-          case '*':
-              multiply(n1, n2);
-              break;
-          case '/':
-              divide(n1, n2);
-              break;
-          case '%':
-              percentage(n1, n2);
-              break
-      }
-};
+const equal = document.querySelector("#equals");
+
+const add = (a, b) => a+b;
+const subtract = (a, b) => a-b;
+const multiply = (a, b) => a*b;
+const divide = (a, b) => a/b;
+const percentage = (a, b) => a/100*b;
 
 function updateDisplay(text) {
       display.innerText = text;
@@ -40,6 +28,39 @@ function resetDisplay(){
       displayNumbers = [];
 }
 
+function operate() {
+      let foo = displayNumbers.join("");
+      if(foo.includes("+")) {
+            foo = foo.split("+");
+            console.log(foo[0]);
+            let newDisplayNumber = add(parseInt(foo[0], 10), parseInt(foo[1], 10));
+            console.log(newDisplayNumber);
+            displayNumbers = [newDisplayNumber];
+            display.innerText = newDisplayNumber;
+      } else if(foo.includes("-")) {
+            foo = foo.split("-");
+            console.log(foo[0]);
+            let newDisplayNumber = subtract(parseInt(foo[0], 10), parseInt(foo[1], 10));
+            console.log(newDisplayNumber);
+            displayNumbers = [newDisplayNumber];
+            display.innerText = newDisplayNumber;
+      } else if(foo.includes("×")) {
+            foo = foo.split("×");
+            console.log(foo[0]);
+            let newDisplayNumber = multiply(parseInt(foo[0], 10), parseInt(foo[1], 10));
+            console.log(newDisplayNumber);
+            displayNumbers = [newDisplayNumber];
+            display.innerText = newDisplayNumber;
+      } else if(foo.includes("÷")) {
+            foo = foo.split("÷");
+            console.log(foo[0]);
+            let newDisplayNumber = divide(parseInt(foo[0], 10), parseInt(foo[1], 10));
+            console.log(newDisplayNumber);
+            displayNumbers = [newDisplayNumber];
+            display.innerText = newDisplayNumber;
+      }
+}
+
 buttons.forEach(button => button.addEventListener("click", () => {
       displayNumbers.push(button.value);
       refreshDisplay();
@@ -47,4 +68,8 @@ buttons.forEach(button => button.addEventListener("click", () => {
 
 ac.addEventListener("click", () => {
       resetDisplay();
+});
+
+equal.addEventListener("click", () => {
+      operate();
 });
