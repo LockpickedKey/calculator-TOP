@@ -1,6 +1,7 @@
 let value1, value2, result;
 let operator = '';
 let displayValue = '0';
+let displayNumbers = [];
 
 const buttons = document.querySelectorAll(".number");
 const display = document.querySelector("#display");
@@ -28,6 +29,12 @@ function updateDisplay(text) {
       display.innerText = text;
 }
 
+function refreshDisplay(){
+      let newDisplay = displayNumbers.join("");
+      display.innerText = newDisplay;
+}
+
 buttons.forEach(button => button.addEventListener("click", () => {
-      updateDisplay(button.value);
+      displayNumbers.push(button.value);
+      refreshDisplay();
 }))
