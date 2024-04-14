@@ -3,7 +3,7 @@ let operator = '';
 let displayValue = '0';
 let displayNumbers = [];
 
-const buttons = document.querySelectorAll(".number");
+const buttons = document.querySelectorAll("button");
 const display = document.querySelector("#display");
 const operate = (n1, op, n2) => {
       switch(op){
