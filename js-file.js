@@ -8,6 +8,7 @@ const display = document.querySelector("#display");
 const ac = document.querySelector("#ac");
 const equal = document.querySelector("#equals");
 const backspace = document.querySelector(".backspace");
+const minusify = document.querySelector("#minusify");
 
 const add = (a, b) => a+b;
 const subtract = (a, b) => a-b;
@@ -30,12 +31,21 @@ function resetDisplay(){
 
 function backspaceDisplay(){
       Arrayify();
+      displayNumbers.pop();
 }
 
 function Arrayify() {
       let foo = displayNumbers.join("");
       displayNumbers = foo.split("");
-      displayNumbers.pop();
+}
+
+function minusDisplay() {
+      let foo = displayNumbers.join("");
+      foo = parseInt(foo);
+      foo = foo * -1;
+      let bar = '' + foo;
+      displayNumbers = bar.split(",");
+      display.innerText = displayNumbers;
 }
 
 function operate() {
@@ -86,4 +96,8 @@ equal.addEventListener("click", () => {
 
 backspace.addEventListener("click", () => {
       backspaceDisplay();
+});
+
+minusify.addEventListener("click", () => {
+      minusDisplay();
 });
