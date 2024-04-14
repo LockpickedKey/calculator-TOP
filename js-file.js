@@ -3,11 +3,19 @@ let operator = '';
 let displayValue = '0';
 let displayNumbers = [];
 
+const keyboardInputs = {
+      numbers: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',  '.'],
+      operators: ['-', '+'],
+      multiply: ['*'],
+      divide: ['/'],
+      equals: ['=', 'Enter'],
+      delete: ['Backspace', 'Delete']
+}
+
 const buttons = document.querySelectorAll(".displayable");
 const display = document.querySelector("#display");
 const ac = document.querySelector("#ac");
 const equal = document.querySelector("#equals");
-const backspace = document.querySelector(".backspace");
 const minusify = document.querySelector("#minusify");
 
 const add = (a, b) => a+b;
@@ -27,11 +35,6 @@ function refreshDisplay(){
 function resetDisplay(){
       display.innerText = "0";
       displayNumbers = [];
-}
-
-function backspaceDisplay(){
-      Arrayify();
-      displayNumbers.pop();
 }
 
 function Arrayify() {
@@ -94,10 +97,33 @@ equal.addEventListener("click", () => {
       operate();
 });
 
-backspace.addEventListener("click", () => {
-      backspaceDisplay();
-});
-
 minusify.addEventListener("click", () => {
       minusDisplay();
 });
+
+document.addEventListener('keydown', keyboardHandleKeydown);
+function keyboardHandleKeydown (e){
+      const keyPressed = e.key;
+      if(keyboardInputs.numbers.indexOf(keyPressed) !== -1){
+            displayNumbers.push(keyPressed);
+            refreshDisplay();
+      }
+      if(keyboardInputs.operators.indexOf(keyPressed) !== -1){
+            displayNumbers.push(keyPressed);
+            refreshDisplay();
+      }
+      if(keyboardInputs.multiply.indexOf(keyPressed) !== -1){
+            displayNumbers.push("×");
+            refreshDisplay();
+      } 
+      if(keyboardInputs.divide.indexOf(keyPressed) !== -1){
+            displayNumbers.push("÷");
+            refreshDisplay();
+      }
+      if(keyboardInputs.equals.indexOf(keyPressed) !== -1){
+            operate();
+      }
+      if(keyboardInputs.delete.indexOf(keyPressed) !== -1){
+            resetDisplay();
+      }
+}
