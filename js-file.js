@@ -5,6 +5,7 @@ let displayNumbers = [];
 
 const buttons = document.querySelectorAll("button");
 const display = document.querySelector("#display");
+const ac = document.querySelector("#ac");
 const operate = (n1, op, n2) => {
       switch(op){
           case '+':
@@ -34,7 +35,16 @@ function refreshDisplay(){
       display.innerText = newDisplay;
 }
 
+function resetDisplay(){
+      display.innerText = "0";
+      displayNumbers = [];
+}
+
 buttons.forEach(button => button.addEventListener("click", () => {
       displayNumbers.push(button.value);
       refreshDisplay();
-}))
+}));
+
+ac.addEventListener("click", () => {
+      resetDisplay();
+});
