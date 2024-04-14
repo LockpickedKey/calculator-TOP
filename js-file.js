@@ -17,6 +17,7 @@ const display = document.querySelector("#display");
 const ac = document.querySelector("#ac");
 const equal = document.querySelector("#equals");
 const minusify = document.querySelector("#minusify");
+const egg = document.querySelector("#egg");
 
 const add = (a, b) => a+b;
 const subtract = (a, b) => a-b;
@@ -126,4 +127,8 @@ function keyboardHandleKeydown (e){
       if(keyboardInputs.delete.indexOf(keyPressed) !== -1){
             resetDisplay();
       }
+}
+
+if(displayNumber.join("").length > 8){
+      egg.innerText = "you're hurting my head";
 }
