@@ -7,12 +7,12 @@ const buttons = document.querySelectorAll(".displayable");
 const display = document.querySelector("#display");
 const ac = document.querySelector("#ac");
 const equal = document.querySelector("#equals");
+const backspace = document.querySelector(".backspace");
 
 const add = (a, b) => a+b;
 const subtract = (a, b) => a-b;
 const multiply = (a, b) => a*b;
 const divide = (a, b) => a/b;
-const percentage = (a, b) => a/100*b;
 
 function updateDisplay(text) {
       display.innerText = text;
@@ -26,6 +26,16 @@ function refreshDisplay(){
 function resetDisplay(){
       display.innerText = "0";
       displayNumbers = [];
+}
+
+function backspaceDisplay(){
+      Arrayify();
+}
+
+function Arrayify() {
+      let foo = displayNumbers.join("");
+      displayNumbers = foo.split("");
+      displayNumbers.pop();
 }
 
 function operate() {
@@ -72,4 +82,8 @@ ac.addEventListener("click", () => {
 
 equal.addEventListener("click", () => {
       operate();
+});
+
+backspace.addEventListener("click", () => {
+      backspaceDisplay();
 });
